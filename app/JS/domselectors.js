@@ -11,6 +11,7 @@ const DOMSelectors = {
     pork: document.querySelector("#porkBtn"),
     beef: document.querySelector("#beefBtn"),
     dessert: document.querySelector("#dessertBtn"),
+    cardsContainer: document.querySelector(".container")
 }
 
 export{DOMSelectors};
