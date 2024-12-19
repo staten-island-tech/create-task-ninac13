@@ -5,7 +5,7 @@ const URL = "https://www.themealdb.com/api/json/v1/1/"; //use this to add on cat
 
 async function fetchMealsFromCategory(URL) {
   try {
-    const mealsInCategoryURL = URL.concat("filter.php?c=breakfast"); //right now its fetching only breakfast, make it so its interchangeable and all meals can be got
+    const mealsInCategoryURL = URL.concat("filter.php?c=breakfast"); //right now its fetching only breakfast, make it so its interchangeable and all meals can be fetched
     const response = await fetch(mealsInCategoryURL);
     if (response.status != 200){
         throw new Error(response);  
@@ -45,7 +45,7 @@ function showcards(generalMealData, specificMealData){
       `beforeend`,
       `<div class="card">
         <h1 class="card-meal-name">${meal.strMeal}</h1>
-        <img src="${meal.strMealThumb} alt= "" class= "card-meal-image"></img> 
+        <img src="${meal.strMealThumb}" alt= "" class= "card-meal-image"></img> 
       </div>`
       //add specificmealdata to each card (ingredients list so ppl can look for allergies)
     )
