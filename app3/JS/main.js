@@ -14,7 +14,7 @@ async function fetchMealsFromCategory(URL) {
     const beefResponse = await fetch(`${URL}filter.php?c=beef`);
     const dessertResponse = await fetch(`${URL}filter.php?c=dessert`);
     if (starterResponse.status != 200 || vegetarianResponse.status != 200 || seafoodResponse.status != 200 || pastaResponse.status != 200 || chickenResponse.status != 200 || porkResponse.status != 200 || beefResponse.status != 200 || dessertResponse.status != 200 ){
-        throw new Error(response);  
+        throw new Error("One or more responses did not work");  
     }
     else{
         const starterData = await starterResponse.json();
@@ -47,12 +47,14 @@ fetchMealsFromCategory(URL);
 function showMeals(generalMealData, specificButton){
   specificButton.addEventListener("click", function(){
     DOMSelectors.cardsContainer.innerHTML = ""; //clear
-    generalMealData.forEach(meal => {
+    generalMealData.meals.forEach(meal => {
       DOMSelectors.cardsContainer.insertAdjacentHTML(
         `beforeend`,
-        `<div class="card">
-          <h1 class="card-meal-name">${meal.strMeal}</h1>
-          <img src="${meal.strMealThumb}" alt= "" class= "card-meal-image"></img> 
+        `<div class="w-1/5 border-4 border-base-100 rounded-lg border-double mx-5 my-5 min-w-64 shadow-md bg-base-content hover:bg-primary active:bg-warning focus:outline-none focus:ring focus:ring-base-content">
+          <p class="text-xl character-name text-center font-serif text-neutral">${meal.strMeal}</p>\
+          <div class="flex justify-center text-neutral">
+            <img src="${meal.strMealThumb}" alt= "" class="w-1/2 h-2/3 rounded-lg hover:w-2/3 hover:l-3/4 duration-500 border-double border-4 border-base-100"></img>
+          </div>
         </div>`
       )
     });
