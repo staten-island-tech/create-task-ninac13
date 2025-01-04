@@ -51,7 +51,7 @@ function showMeals(generalMealData, specificButton){
       DOMSelectors.cardsContainer.insertAdjacentHTML(
         `beforeend`,
         `<div class="w-1/5 border-4 border-base-100 rounded-lg border-double mx-5 my-5 min-w-64 shadow-md bg-base-content hover:bg-primary active:bg-warning focus:outline-none focus:ring focus:ring-base-content">
-          <p class="text-xl character-name text-center font-serif text-neutral">${meal.strMeal}</p>\
+          <p class="text-xl character-name text-center font-serif text-neutral">${meal.strMeal}</p>
           <div class="flex justify-center text-neutral">
             <img src="${meal.strMealThumb}" alt= "" class="w-1/2 h-2/3 rounded-lg hover:w-2/3 hover:l-3/4 duration-500 border-double border-4 border-base-100"></img>
           </div>
