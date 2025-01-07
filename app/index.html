@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Task</title>
   </head>
+  <div class="background" style="background-image: url(img/cafe.jpg)">
   <body>
-    <div class="bg-scroll" style="background-image: url(img/background.jpg)">
       <div class="flex justify-center w-full">
         <p class= "text-primary text-5xl font-serif text-center mx-auto mt-7 mb-5 animate-pulse underline underline-offset-8">
               Restaurant Ordering
@@ -24,10 +24,13 @@
         <button class="btn btn-primary hover:w-52 duration-1000 btn-outline mx-5 font-serif mb-3" id="beefBtn">Beef Meals</button>
         <button class="btn btn-primary hover:w-52 duration-1000 btn-outline mx-5 font-serif mb-3" id="dessertBtn">Dessert</button>
       </div>
+      <div class="fixed h-full bg-base-content" id="sideColumn">
+        <button class="btn btn-primary w-24 min-w-24 mx-5 font-serif mb-3" id="submitBtn">Submit</button>
+      </div>
       <div class="container mx-auto flex justify-center flex-wrap">
         <!--Where cards of meals will be added-->
       </div>
-    </div>
     <script type="module" src="JS/main.js"></script>
   </body>
+</div>
 </html>

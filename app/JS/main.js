@@ -50,13 +50,17 @@ function showMeals(generalMealData, specificButton){
     generalMealData.meals.forEach(meal => {
       DOMSelectors.cardsContainer.insertAdjacentHTML(
         `beforeend`,
-        `<div class="w-1/4 py-28 border-4 border-base-100 rounded-lg border-double hover:w-2/5 duration-700 mx-5 my-5 min-w-64 shadow-md bg-base-content hover:bg-primary active:bg-warning focus:outline-none focus:ring focus:ring-base-content">
+        `<button class="w-1/4 py-28 border-4 border-base-100 rounded-lg border-double hover:w-2/5 duration-700 mx-5 my-5 min-w-64 shadow-md bg-base-content hover:bg-primary active:bg-warning focus:outline-none focus:ring focus:ring-base-content">
           <p class="mb-20 text-xl character-name text-center font-serif text-neutral">${meal.strMeal}</p>
           <div class="flex justify-center text-neutral">
             <img src="${meal.strMealThumb}" alt= "" class="w-2/3 h-3/4 rounded-lg border-double border-4 border-base-100"></img>
           </div>
-        </div>`
+        </button>`
       )
     });
   }
 )}
+
+function cardClicked(){
+  
+}

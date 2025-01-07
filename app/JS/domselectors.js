@@ -7,7 +7,8 @@ const DOMSelectors = {
     pork: document.querySelector("#porkBtn"),
     beef: document.querySelector("#beefBtn"),
     dessert: document.querySelector("#dessertBtn"),
-    cardsContainer: document.querySelector(".container")
+    cardsContainer: document.querySelector(".container"),
+    submitButton: document.querySelector("#submitBtn")
 }
 
 export{DOMSelectors};
