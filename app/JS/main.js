@@ -2,6 +2,7 @@ import '../CSS/style.css';
 import { DOMSelectors } from "./domselectors";
 
 const URL = "https://www.themealdb.com/api/json/v1/1/"; //use this to add on categories!!
+const CART = [];
 
 async function fetchMealsFromCategory(URL) {
   try {
@@ -50,17 +51,22 @@ function showMeals(generalMealData, specificButton){
     generalMealData.meals.forEach(meal => {
       DOMSelectors.cardsContainer.insertAdjacentHTML(
         `beforeend`,
-        `<button class="w-1/4 py-28 border-4 border-base-100 rounded-lg border-double hover:w-2/5 duration-700 mx-5 my-5 min-w-64 shadow-md bg-base-content hover:bg-primary active:bg-warning focus:outline-none focus:ring focus:ring-base-content">
+        `<div class="w-1/4 py-28 border-4 border-base-100 rounded-lg border-double hover:w-2/5 duration-700 mx-5 my-5 min-w-64 shadow-md bg-primary hover:bg-secondary active:bg-warning hover:outline-dotted outline-accent focus:ring focus:ring-base-content">
           <p class="mb-20 text-xl character-name text-center font-serif text-neutral">${meal.strMeal}</p>
           <div class="flex justify-center text-neutral">
             <img src="${meal.strMealThumb}" alt= "" class="w-2/3 h-3/4 rounded-lg border-double border-4 border-base-100"></img>
           </div>
-        </button>`
+          <div class="flex justify-center">
+            <button class="btn btn-secondary hover:w-52 duration-1000 btn-outline mt-5 mx-5 font-serif mb-3" id="addToCart">Add To Cart</button>
+          </div>
+        </div>`
       )
     });
   }
 )}
 
-function cardClicked(){
-  
+function cardButtonClicked(addToCartButton){
+  addToCartButton.addEventListener("click", function(){
+
+  })
 }

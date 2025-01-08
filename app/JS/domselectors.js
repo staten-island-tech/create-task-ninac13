@@ -8,7 +8,8 @@ const DOMSelectors = {
     beef: document.querySelector("#beefBtn"),
     dessert: document.querySelector("#dessertBtn"),
     cardsContainer: document.querySelector(".container"),
-    submitButton: document.querySelector("#submitBtn")
+    showCartItemsButton: document.querySelector("#showCartItems"),
+    addToCartButton: document.querySelector("#addToCart")
 }
 
 export{DOMSelectors};
