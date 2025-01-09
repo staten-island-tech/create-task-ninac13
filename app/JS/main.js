@@ -1,7 +1,7 @@
 import '../CSS/style.css';
 import { DOMSelectors } from "./domselectors";
 
-const URL = "https://www.themealdb.com/api/json/v1/1/"; //use this to add on categories!!
+const URL = "https://www.themealdb.com/api/json/v1/1/";
 const CART = [];
 
 async function fetchMealsFromCategory(URL) {
@@ -27,14 +27,14 @@ async function fetchMealsFromCategory(URL) {
         const beefData = await beefResponse.json();
         const dessertData = await dessertResponse.json();
         //call functions underneath:\
-        showMeals(starterData, DOMSelectors.starter);
-        showMeals(vegetarianData, DOMSelectors.vegetarian);
-        showMeals(seafoodData, DOMSelectors.seafood);
-        showMeals(pastaData, DOMSelectors.pasta);
-        showMeals(chickenData, DOMSelectors.chicken);
-        showMeals(porkData, DOMSelectors.pork);
-        showMeals(beefData, DOMSelectors.beef);
-        showMeals(dessertData, DOMSelectors.dessert);
+        showMeals(starterData, DOMSelectors.starter, "Starter");
+        showMeals(vegetarianData, DOMSelectors.vegetarian, "Vegetarian");
+        showMeals(seafoodData, DOMSelectors.seafood, "Seafood");
+        showMeals(pastaData, DOMSelectors.pasta, "Pasta");
+        showMeals(chickenData, DOMSelectors.chicken, "Chicken");
+        showMeals(porkData, DOMSelectors.pork, "Pork");
+        showMeals(beefData, DOMSelectors.beef, "Beef");
+        showMeals(dessertData, DOMSelectors.dessert, "Dessert");
     }
   } catch (error) {
     alert ("There is no agent found");
@@ -44,29 +44,64 @@ async function fetchMealsFromCategory(URL) {
 
 fetchMealsFromCategory(URL);
 
-//general function for showing meals onto screen
-function showMeals(generalMealData, specificButton){
-  specificButton.addEventListener("click", function(){
-    DOMSelectors.cardsContainer.innerHTML = ""; //clear
-    generalMealData.meals.forEach(meal => {
+function showMeals(generalMealData, specificButton, categoryName) {
+  specificButton.addEventListener("click", function () {
+    DOMSelectors.cardsContainer.innerHTML = "";
+    generalMealData.meals.forEach((meal) => {
       DOMSelectors.cardsContainer.insertAdjacentHTML(
         `beforeend`,
         `<div class="w-1/4 py-28 border-4 border-base-100 rounded-lg border-double hover:w-2/5 duration-700 mx-5 my-5 min-w-64 shadow-md bg-primary hover:bg-secondary active:bg-warning hover:outline-dotted outline-accent focus:ring focus:ring-base-content">
           <p class="mb-20 text-xl character-name text-center font-serif text-neutral">${meal.strMeal}</p>
           <div class="flex justify-center text-neutral">
-            <img src="${meal.strMealThumb}" alt= "" class="w-2/3 h-3/4 rounded-lg border-double border-4 border-base-100"></img>
+            <img src="${meal.strMealThumb}" alt="" class="w-2/3 h-3/4 rounded-lg border-double border-4 border-base-100"></img>
           </div>
           <div class="flex justify-center">
-            <button class="btn btn-secondary hover:w-52 duration-1000 btn-outline mt-5 mx-5 font-serif mb-3" id="addToCart">Add To Cart</button>
+            <button class="btn btn-secondary hover:w-52 duration-1000 btn-outline mt-5 mx-5 font-serif mb-3 add-to-cart" meal-name="${meal.strMeal}" meal-category-name="${categoryName}">Add To Cart</button>
           </div>
         </div>`
-      )
+      );
     });
-  }
-)}
 
-function cardButtonClicked(addToCartButton){
-  addToCartButton.addEventListener("click", function(){
-
+    DOMSelectors.addToCartButtons = document.querySelectorAll(".add-to-cart");
+    cardButtonClicked();
   })
 }
+
+function cardButtonClicked() {
+  DOMSelectors.addToCartButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const mealName = button.getAttribute("meal-name");
+      const mealCategoryName = button.getAttribute("meal-category-name");
+      CART.push(`Meal Name: ${mealName}, Category: ${mealCategoryName}`);
+      console.log(`Added to cart: ${mealName}`);
+      console.log(`Added to cart: ${mealCategoryName}`);
+      console.log(`Cart:`, CART);
+    });
+  });
+}
+
+function submitButtonClicked(){
+  const showCartItemsButton = DOMSelectors.showCartItemsButton;
+  const orderSummaryContainer = DOMSelectors.orderSummaryContainer;
+  orderSummaryContainer.innerHTML = "";
+
+  showCartItemsButton.addEventListener("click", function(){
+    if (CART.length === 0) {
+      alert("The cart is empty.");
+    }
+    else{
+      let orderSummary = "";
+
+      for (let i=0; i<CART.length; i++){
+        const meal = CART[i];
+        orderSummary += `<p> Meal: ${meal.mealName} Category: ${meal.mealCategoryName}</p>`;
+      }
+
+      orderSummaryContainer.innerHTML = `
+      <h2>Your Order Summary:</h2>
+      ${orderSummary}`;
+    }
+  })
+}
+
+submitButtonClicked();

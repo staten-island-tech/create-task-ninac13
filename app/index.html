@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Task</title>
   </head>
-  <div class="w-full" style="background-image: url(img/cafe.jpg)">
+  <div class="bg-center min-h-screen" style="background-image: url(img/cafe.jpg)">
   <body>
       <div class="flex justify-center w-full">
         <p class= "text-primary-content text-5xl font-serif text-center mx-auto mt-7 mb-5 animate-pulse underline underline-offset-8">
@@ -26,9 +26,13 @@
       </div>
       <div class="fixed h-96 bg-primary rounded-2xl" id="sideColumn">
         <button class="btn btn-secondary w-24 min-w-24 mx-5 font-serif mb-3 rounded-full text-primary-content" id="showCartItems">Show Cart Items</button>
+        <p class="mb-20 text-xl character-name text-center font-serif text-neutral">Order Summary</p>
+        <div class="container mx-auto flex justify-center flex-wrap" id="orderSummary">
+
+        </div>
       </div>
-      <div class="ml-28 container mx-auto flex justify-center flex-wrap mr-8">
-        <!--Where cards of meals will be added-->
+      <div class="ml-28 container mx-auto flex justify-center flex-wrap mr-8" id="container">
+        
       </div>
     <script type="module" src="JS/main.js"></script>
   </body>
