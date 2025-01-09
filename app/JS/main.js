@@ -50,7 +50,7 @@ function showMeals(generalMealData, specificButton, categoryName) {
     generalMealData.meals.forEach((meal) => {
       DOMSelectors.cardsContainer.insertAdjacentHTML(
         `beforeend`,
-        `<div class="w-1/4 py-28 border-4 border-base-100 rounded-lg border-double hover:w-2/5 duration-700 mx-5 my-5 min-w-64 shadow-md bg-primary hover:bg-secondary active:bg-warning hover:outline-dotted outline-accent focus:ring focus:ring-base-content">
+        `<div class="w-1/5 py-28 border-4 border-base-100 rounded-lg border-double hover:w-1/4 duration-700 mx-5 my-5 min-w-64 shadow-md bg-primary hover:bg-secondary hover:outline-dotted outline-accent focus:ring focus:ring-base-content">
           <p class="mb-20 text-xl character-name text-center font-serif text-neutral">${meal.strMeal}</p>
           <div class="flex justify-center text-neutral">
             <img src="${meal.strMealThumb}" alt="" class="w-2/3 h-3/4 rounded-lg border-double border-4 border-base-100"></img>
@@ -82,8 +82,7 @@ function cardButtonClicked() {
 
 function submitButtonClicked(){
   const showCartItemsButton = DOMSelectors.showCartItemsButton;
-  const orderSummaryContainer = DOMSelectors.orderSummaryContainer;
-  orderSummaryContainer.innerHTML = "";
+  DOMSelectors.orderSummary.innerHTML = "";
 
   showCartItemsButton.addEventListener("click", function(){
     if (CART.length === 0) {
@@ -97,9 +96,10 @@ function submitButtonClicked(){
         orderSummary += `<p> Meal: ${meal.mealName} Category: ${meal.mealCategoryName}</p>`;
       }
 
-      orderSummaryContainer.innerHTML = `
-      <h2>Your Order Summary:</h2>
-      ${orderSummary}`;
+      DOMSelectors.orderSummary.insertAdjacentHTML(
+        `beforeend`,
+        `<p class="text-xl character-name text-center font-serif text-neutral">${orderSummary}</p>`
+      );
     }
   })
 }

@@ -7,31 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Task</title>
   </head>
-  <div class="bg-center min-h-screen" style="background-image: url(img/cafe.jpg)">
+  <div class="bg-center bg-fixed min-h-screen" style="background-image: url(img/cafe.jpg)">
   <body>
       <div class="flex justify-center w-full">
-        <p class= "text-primary-content text-5xl font-serif text-center mx-auto mt-7 mb-5 animate-pulse underline underline-offset-8">
+        <p class= "text-primary-content text-5xl font-serif text-center mx-auto mt-7 mb-5 underline underline-offset-8">
               Restaurant Ordering
         </p>
       </div>
       <div class="flex justify-center flex-wrap px-4">
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full" id="starterBtn">Starter Appetizers</button>
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full" id="vegetarianBtn">Vegetarian</button>
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full" id="seafoodBtn">Seafood</button>
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full" id="pastaBtn">Pasta</button>
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full" id="chickenBtn">Chicken Meals</button>
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full" id="porkBtn">Pork Meals</button>
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full" id="beefBtn">Beef Meals</button>
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full" id="dessertBtn">Dessert</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="starterBtn">Starter Appetizers</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="vegetarianBtn">Vegetarian</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="seafoodBtn">Seafood</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="pastaBtn">Pasta</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="chickenBtn">Chicken Meals</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="porkBtn">Pork Meals</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="beefBtn">Beef Meals</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="dessertBtn">Dessert</button>
       </div>
-      <div class="fixed h-96 bg-primary rounded-2xl" id="sideColumn">
-        <button class="btn btn-secondary w-24 min-w-24 mx-5 font-serif mb-3 rounded-full text-primary-content" id="showCartItems">Show Cart Items</button>
-        <p class="mb-20 text-xl character-name text-center font-serif text-neutral">Order Summary</p>
-        <div class="container mx-auto flex justify-center flex-wrap" id="orderSummary">
+      <div class="overflow-y-scroll fixed h-2/3 mx-auto flex flex-wrap bg-primary rounded-2xl w-48 ml-8 justify-center" id="sideColumn">
+        <button class="btn btn-secondary w-24 min-w-24 font-serif rounded-full text-primary-content my-3" id="showCartItems">Show Cart Items</button>
+        <p class="text-xl character-name text-center font-serif text-neutral text-decoration-line: underline underline-offset-2">Order Summary:</p>
+        <div class="mx-auto flex justify-center flex-wrap" id="orderSummary">
 
         </div>
       </div>
-      <div class="ml-28 container mx-auto flex justify-center flex-wrap mr-8" id="container">
+      <div class="container mx-auto flex justify-center flex-wrap" id="container">
         
       </div>
     <script type="module" src="JS/main.js"></script>
