@@ -10,7 +10,8 @@ const DOMSelectors = {
     cardsContainer: document.querySelector("#container"),
     showCartItemsButton: document.querySelector("#showCartItems"),
     addToCartButtons: document.querySelectorAll("#addToCart"),
-    orderSummary: document.querySelector("#orderSummary")
+    orderSummary: document.querySelector("#orderSummary"),
+    allButtons: document.querySelectorAll("#allButtons .btn")
 }
 
 export{DOMSelectors};

@@ -105,3 +105,13 @@ function submitButtonClicked(){
 }
 
 submitButtonClicked();
+
+function buttonChangeColor(){
+  DOMSelectors.allButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      DOMSelectors.allButtons.forEach((btn) => btn.classList.remove('btn-active'));
+      button.classList.add('btn-active');
+    });
+  })
+}
+buttonChangeColor();

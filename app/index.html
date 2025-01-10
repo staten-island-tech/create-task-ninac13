@@ -14,25 +14,27 @@
               Restaurant Ordering
         </p>
       </div>
-      <div class="flex justify-center flex-wrap px-4">
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="starterBtn">Starter Appetizers</button>
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="vegetarianBtn">Vegetarian</button>
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="seafoodBtn">Seafood</button>
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="pastaBtn">Pasta</button>
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="chickenBtn">Chicken Meals</button>
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="porkBtn">Pork Meals</button>
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="beefBtn">Beef Meals</button>
-        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300" id="dessertBtn">Dessert</button>
+      <div class="flex justify-center flex-wrap px-4" id="allButtons">
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300 btn-active" id="starterBtn">Starter Appetizers</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300 btn-active" id="vegetarianBtn">Vegetarian</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300 btn-active" id="seafoodBtn">Seafood</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300 btn-active" id="pastaBtn">Pasta</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300 btn-active" id="chickenBtn">Chicken Meals</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300 btn-active" id="porkBtn">Pork Meals</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300 btn-active" id="beefBtn">Beef Meals</button>
+        <button class="btn btn-primary mx-5 font-serif mb-3 rounded-full hover:outline-dotted outline-accent duration-300 btn-active" id="dessertBtn">Dessert</button>
       </div>
-      <div class="overflow-y-scroll fixed h-2/3 mx-auto flex flex-wrap bg-primary rounded-2xl w-48 ml-8 justify-center" id="sideColumn">
-        <button class="btn btn-secondary w-24 min-w-24 font-serif rounded-full text-primary-content my-3" id="showCartItems">Show Cart Items</button>
-        <p class="text-xl character-name text-center font-serif text-neutral text-decoration-line: underline underline-offset-2">Order Summary:</p>
-        <div class="mx-auto flex justify-center flex-wrap" id="orderSummary">
+      <div class="flex">
+        <div class="fixed top-44 left-8 h-4/5 w-48 bg-primary rounded-2xl p-4 overflow-y-auto" id="sideColumn">
+          <button class="btn btn-secondary w-full font-serif rounded-full text-primary-content my-3" id="showCartItems">Show Cart Items</button>
+          <p class="text-xl character-name text-center font-serif text-neutral underline underline-offset-2">Order Summary:</p>
+          <div class="mx-auto flex justify-center flex-wrap" id="orderSummary"></div>
+        </div>
+
+        <div class="flex-1 ml-60 container flex justify-center flex-wrap" id="container">
 
         </div>
-      </div>
-      <div class="container mx-auto flex justify-center flex-wrap" id="container">
-        
+        </div>
       </div>
     <script type="module" src="JS/main.js"></script>
   </body>
