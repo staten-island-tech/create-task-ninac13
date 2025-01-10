@@ -11,7 +11,8 @@ const DOMSelectors = {
     showCartItemsButton: document.querySelector("#showCartItems"),
     addToCartButtons: document.querySelectorAll("#addToCart"),
     orderSummary: document.querySelector("#orderSummary"),
-    allButtons: document.querySelectorAll("#allButtons .btn")
+    allButtons: document.querySelectorAll("#allButtons .btn"),
+    clearCart: document.querySelector("#clearCartItems")
 }
 
 export{DOMSelectors};

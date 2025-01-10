@@ -50,13 +50,13 @@ function showMeals(generalMealData, specificButton, categoryName) {
     generalMealData.meals.forEach((meal) => {
       DOMSelectors.cardsContainer.insertAdjacentHTML(
         `beforeend`,
-        `<div class="w-1/5 py-28 border-4 border-base-100 rounded-lg border-double hover:w-1/4 duration-700 mx-5 my-5 min-w-64 shadow-md bg-primary hover:bg-secondary hover:outline-dotted outline-accent focus:ring focus:ring-base-content">
+        `<div class="w-1/5 py-28 border-4 border-base-100 rounded-lg border-double hover:w-1/4 duration-700 mx-5 my-5 min-w-64 shadow-md bg-base-300 hover:bg-base-100 hover:outline-dotted outline-accent focus:ring focus:ring-base-content">
           <p class="mb-20 text-xl character-name text-center font-serif text-neutral">${meal.strMeal}</p>
           <div class="flex justify-center text-neutral">
             <img src="${meal.strMealThumb}" alt="" class="w-2/3 h-3/4 rounded-lg border-double border-4 border-base-100"></img>
           </div>
           <div class="flex justify-center">
-            <button class="btn btn-secondary hover:w-52 duration-1000 btn-outline mt-5 mx-5 font-serif mb-3 add-to-cart" meal-name="${meal.strMeal}" meal-category-name="${categoryName}">Add To Cart</button>
+            <button class="btn btn-secondary w-52 hover:w-56 hover:h-16 hover:font-extrabold duration-700 font-normal mt-5 mx-5 font-serif mb-3 add-to-cart hover:outline-dotted outline-accent" meal-name="${meal.strMeal}" meal-category-name="${categoryName}">Add To Cart</button>
           </div>
         </div>`
       );
@@ -89,20 +89,37 @@ function submitButtonClicked(){
       alert("The cart is empty.");
     }
     else{
+      DOMSelectors.orderSummary.innerHTML = "";
       let orderSummary = "";
 
       for (let i=0; i<CART.length; i++){
         const meal = CART[i];
-        orderSummary += `<p> Meal: ${meal.mealName} Category: ${meal.mealCategoryName}</p>`;
+        orderSummary += `<p> ${i+1}. Meal: ${meal.mealName} Category: ${meal.mealCategoryName}</p>`;
       }
 
       DOMSelectors.orderSummary.insertAdjacentHTML(
         `beforeend`,
         `<p class="text-xl character-name text-center font-serif text-neutral">${orderSummary}</p>`
       );
+      console.log(CART);
     }
   })
 }
+
+function clearCartItems(){
+  const clearCartItemsButton = DOMSelectors.clearCart;
+  clearCartItemsButton.addEventListener("click", function(){
+    if (CART.length===0){
+      alert("The cart is already cleared.");
+    }
+    else{
+      DOMSelectors.orderSummary.innerHTML = "";
+      CART.length=0;
+      console.log(CART); 
+    }
+  })
+}
+clearCartItems();
 
 submitButtonClicked();
 
