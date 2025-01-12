@@ -12,7 +12,8 @@ const DOMSelectors = {
     addToCartButtons: document.querySelectorAll("#addToCart"),
     orderSummary: document.querySelector("#orderSummary"),
     allButtons: document.querySelectorAll("#allButtons .btn"),
-    clearCart: document.querySelector("#clearCartItems")
+    clearCart: document.querySelector("#clearCartItems"),
+    deleteButtons: document.querySelectorAll(".delete-btn")
 }
 
 export{DOMSelectors};

@@ -50,15 +50,15 @@ function showMeals(generalMealData, specificButton, categoryName) {
     generalMealData.meals.forEach((meal) => {
       DOMSelectors.cardsContainer.insertAdjacentHTML(
         `beforeend`,
-        `<div class="w-1/5 py-28 border-4 border-base-100 rounded-lg border-double hover:w-1/4 duration-700 mx-5 my-5 min-w-64 shadow-md bg-base-300 hover:bg-base-100 hover:outline-dotted outline-accent focus:ring focus:ring-base-content">
-          <p class="mb-20 text-xl character-name text-center font-serif text-neutral">${meal.strMeal}</p>
-          <div class="flex justify-center text-neutral">
-            <img src="${meal.strMealThumb}" alt="" class="w-2/3 h-3/4 rounded-lg border-double border-4 border-base-100"></img>
-          </div>
-          <div class="flex justify-center">
-            <button class="btn btn-secondary w-52 hover:w-56 hover:h-16 hover:font-extrabold duration-700 font-normal mt-5 mx-5 font-serif mb-3 add-to-cart hover:outline-dotted outline-accent" meal-name="${meal.strMeal}" meal-category-name="${categoryName}">Add To Cart</button>
-          </div>
-        </div>`
+          `<div class="card w-1/4 pb-20 pt-12 h-96 border-4 border-base-100 rounded-lg border-double hover:w-1/4 duration-700 mx-5 my-5 min-w-64 shadow-md bg-base-300 hover:bg-base-100 hover:outline-dotted outline-accent focus:ring focus:ring-base-content">
+            <p class="mb-15 text-xl character-name text-center font-serif text-neutral">${meal.strMeal}</p>
+            <div class="flex justify-center text-neutral">
+              <img src="${meal.strMealThumb}" alt="" class="w-2/3 h-3/4 rounded-lg border-double border-4 border-base-100"></img>
+            </div>
+            <div class="flex justify-center">
+              <button class="btn btn-secondary w-52 hover:w-56 hover:h-16 hover:font-extrabold duration-700 font-normal mt-5 mx-5 font-serif add-to-cart hover:outline-dotted outline-accent" meal-name="${meal.strMeal}" meal-category-name="${categoryName}">Add To Cart</button>
+            </div>
+          </div>`
       );
     });
 
@@ -72,10 +72,41 @@ function cardButtonClicked() {
     button.addEventListener("click", function () {
       const mealName = button.getAttribute("meal-name");
       const mealCategoryName = button.getAttribute("meal-category-name");
-      CART.push(`Meal Name: ${mealName}, Category: ${mealCategoryName}`);
-      console.log(`Added to cart: ${mealName}`);
-      console.log(`Added to cart: ${mealCategoryName}`);
-      console.log(`Cart:`, CART);
+      CART.push({mealName: mealName, mealCategoryName: mealCategoryName,});
+      DOMSelectors.orderSummary.insertAdjacentHTML(
+        `beforeend`,
+        `<div class="cart-item w-full p-4 flex justify-between items-center border-b border-gray-300">
+            <div>
+              <p class="text-lg font-extrabold font-serif">Pending: </p>
+              <p class="text-lg font-serif">${mealName}</p>
+              <p class="text-sm font-serif text-primary-content">Category: ${mealCategoryName}</p>
+            </div>
+            <button class="delete-btn btn btn-error w-24 px-6 ml-4" data-meal-name="${mealName}" data-meal-category="${mealCategoryName}">Delete From Cart</button>
+          </div>
+        `
+      );
+      DOMSelectors.deleteButtons = document.querySelectorAll(".delete-btn");
+      deleteButton();
+    });
+  });
+}
+
+function deleteButton(){
+  const deleteButtons = DOMSelectors.deleteButtons;
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const mealName = button.getAttribute("data-meal-name");
+      const mealCategoryName = button.getAttribute("data-meal-category");
+      for (let i = 0; i < CART.length; i++) {
+        if (CART[i].mealName === mealName && CART[i].mealCategoryName === mealCategoryName) {
+          CART.splice(i, 1);
+          button.parentElement.remove(); 
+          return;
+        }
+        else{
+          return;
+        }
+      }
     });
   });
 }
@@ -94,14 +125,13 @@ function submitButtonClicked(){
 
       for (let i=0; i<CART.length; i++){
         const meal = CART[i];
-        orderSummary += `<p> ${i+1}. Meal: ${meal.mealName} Category: ${meal.mealCategoryName}</p>`;
+        orderSummary += `<p> ${i+1}. Meal: ${meal.mealName}<br> Category: ${meal.mealCategoryName}<br><br></p>`;
       }
 
       DOMSelectors.orderSummary.insertAdjacentHTML(
         `beforeend`,
         `<p class="text-xl character-name text-center font-serif text-neutral">${orderSummary}</p>`
       );
-      console.log(CART);
     }
   })
 }
@@ -109,13 +139,12 @@ function submitButtonClicked(){
 function clearCartItems(){
   const clearCartItemsButton = DOMSelectors.clearCart;
   clearCartItemsButton.addEventListener("click", function(){
-    if (CART.length===0){
+    if (CART.length===0 && DOMSelectors.orderSummary.innerHTML === ""){
       alert("The cart is already cleared.");
     }
     else{
       DOMSelectors.orderSummary.innerHTML = "";
       CART.length=0;
-      console.log(CART); 
     }
   })
 }
@@ -126,9 +155,11 @@ submitButtonClicked();
 function buttonChangeColor(){
   DOMSelectors.allButtons.forEach(button => {
     button.addEventListener('click', () => {
-      DOMSelectors.allButtons.forEach((btn) => btn.classList.remove('btn-active'));
+      DOMSelectors.allButtons.forEach((btn) => {
+        btn.classList.remove('btn-active');
+      });
       button.classList.add('btn-active');
-    });
+    })
   })
 }
 buttonChangeColor();
