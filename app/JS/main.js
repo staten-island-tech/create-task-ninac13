@@ -63,12 +63,12 @@ function showMeals(generalMealData, specificButton, categoryName) {
     });
 
     DOMSelectors.addToCartButtons = document.querySelectorAll(".add-to-cart");
-    cardButtonClicked();
+    cardButtonClicked(DOMSelectors.addToCartButtons);
   })
 }
 
-function cardButtonClicked() {
-  DOMSelectors.addToCartButtons.forEach((button) => {
+function cardButtonClicked(addCart) {
+  addCart.forEach((button) => {
     button.addEventListener("click", function () {
       const mealName = button.getAttribute("meal-name");
       const mealCategoryName = button.getAttribute("meal-category-name");
