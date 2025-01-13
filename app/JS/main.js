@@ -26,7 +26,6 @@ async function fetchMealsFromCategory(URL) {
         const porkData = await porkResponse.json();
         const beefData = await beefResponse.json();
         const dessertData = await dessertResponse.json();
-        //call functions underneath:\
         showMeals(starterData, DOMSelectors.starter, "Starter");
         showMeals(vegetarianData, DOMSelectors.vegetarian, "Vegetarian");
         showMeals(seafoodData, DOMSelectors.seafood, "Seafood");
