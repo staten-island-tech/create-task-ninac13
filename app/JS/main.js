@@ -63,12 +63,12 @@ function showMeals(generalMealData, specificButton, categoryName) {
     });
 
     DOMSelectors.addToCartButtons = document.querySelectorAll(".add-to-cart");
-    cardButtonClicked(DOMSelectors.addToCartButtons);
+    cardButtonClicked();
   })
 }
 
-function cardButtonClicked(addCart) {
-  addCart.forEach((button) => {
+function cardButtonClicked() {
+  DOMSelectors.addToCartButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const mealName = button.getAttribute("meal-name");
       const mealCategoryName = button.getAttribute("meal-category-name");
@@ -86,27 +86,24 @@ function cardButtonClicked(addCart) {
         `
       );
       DOMSelectors.deleteButtons = document.querySelectorAll(".delete-btn");
-      deleteButton();
+      deleteButton(DOMSelectors.deleteButtons);
     });
   });
 }
 
-function deleteButton(){
-  const deleteButtons = DOMSelectors.deleteButtons;
-  deleteButtons.forEach((button) => {
-    button.addEventListener("click", function () {
+function deleteButton(buttons) {
+  buttons.forEach((button) => {
+    button.addEventListener("click", function deleteOnClick() {
       const mealName = button.getAttribute("data-meal-name");
       const mealCategoryName = button.getAttribute("data-meal-category");
       for (let i = 0; i < CART.length; i++) {
         if (CART[i].mealName === mealName && CART[i].mealCategoryName === mealCategoryName) {
           CART.splice(i, 1);
-          button.parentElement.remove(); 
-          return;
-        }
-        else{
-          return;
+          break;
         }
       }
+      button.parentElement.remove();
+      button.removeEventListener("click", deleteOnClick);
     });
   });
 }
